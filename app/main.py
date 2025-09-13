@@ -1,17 +1,25 @@
+import os
+import uvicorn
 from fastapi import FastAPI
-from app.routes import waitlist, notify
 from fastapi.middleware.cors import CORSMiddleware
+from app.routes import waitlist
 
-app = FastAPI(title="Valido Waitlist API", version="1.0.0")
+app = FastAPI()
 
+# Enable CORS for frontend (allow all origins for now, restrict in production)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # during development, allow all
+    allow_origins=["*"],  # change to your frontend domain in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Routes
-app.include_router(waitlist.router, prefix="/waitlist", tags=["Waitlist"])
-app.include_router(notify.router, prefix="/notify", tags=["Notify"])
+# Register routes
+app.include_router(waitlist.router, prefix="/waitlist")
+
+
+# ✅ Azure will call this file directly
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # fallback 8000 for local
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port, reload=True)
