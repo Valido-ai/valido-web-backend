@@ -14,8 +14,6 @@ Stores data in **MongoDB** and sends email notifications when Valido goes live.
 
 ---
 
-## 🔹 Setup
-
 ### Clone Repo
 ```bash
 git clone https://github.com/Valido-ai/valido-web-backend

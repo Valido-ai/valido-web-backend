@@ -1,4 +1,5 @@
-from pydantic import BaseSettings, EmailStr
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import EmailStr
 from functools import lru_cache
 
 class Settings(BaseSettings):
@@ -10,8 +11,7 @@ class Settings(BaseSettings):
     EMAIL_PORT: int = 587
     ADMIN_API_KEY: str
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 @lru_cache()
 def get_settings():
