@@ -22,4 +22,4 @@ app.include_router(waitlist.router, prefix="/waitlist")
 # ✅ Azure will call this file directly
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))  # fallback 8000 for local
-    uvicorn.run("app.main:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
