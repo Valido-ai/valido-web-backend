@@ -1,8 +1,9 @@
 fastapi
 uvicorn
 pymongo
+motor
 pydantic[email]
 python-dotenv
-motor
 gunicorn
 pydantic-settings>=2.3.4
+fastapi-mail
