@@ -5,4 +5,4 @@ pydantic[email]
 python-dotenv
 motor
 gunicorn
-
+pydantic-settings>=2.0.0
